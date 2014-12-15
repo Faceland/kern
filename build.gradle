@@ -54,7 +54,7 @@ publishing {
     }
     repositories {
         maven {
-            url "http://repo-topplethenun.rhcloud.com/nexus/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'release'}/"
+            url "http://repo-topplethenun.rhcloud.com/nexus/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}/"
             name "nunnerycode-repo"
             credentials {
                 username System.getenv("nexusUsername") ?: nexusUsername
