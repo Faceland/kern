@@ -78,6 +78,7 @@ shadowJar {
     relocate "javax.inject", "org.nunnerycode.kern.inject"
     relocate "com.sk89q.intake", "org.nunnerycode.kern.intake"
     relocate "mkremins.fanciful", "org.nunnerycode.kern.fanciful"
+    relocate "net.amoebaman", "org.nunnerycode.kern.amoebaman"
     relocate "org.flywaydb", "org.nunnerycode.kern.flywaydb"
     relocate "net.objecthunter", "org.nunnerycode.kern.objecthunter"
 }
