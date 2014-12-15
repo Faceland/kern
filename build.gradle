@@ -1,0 +1,81 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "1.2.0"
+    id "java"
+    id "maven"
+    id "maven-publish"
+    id "wrapper"
+}
+
+sourceCompatibility = "1.7"
+
+defaultTasks 'clean', 'check', 'build'
+
+group = "org.nunnerycode"
+archivesBaseName = "kern"
+version = "0.0.1-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://hub.spigotmc.org/nexus/content/groups/public/"
+    }
+    maven {
+        url "http://maven.sk89q.com/repo/"
+    }
+    maven {
+        url "https://raw.github.com/mkremins/fanciful/mvn-repo/"
+    }
+}
+
+artifacts {
+    archives shadowJar
+}
+
+dependencies {
+    compile "com.google.inject:guice:4.0-beta5"
+    compile "org.jooq:jooq:3.5.0"
+    compile "org.jooq:jooq-meta:3.5.0"
+    compile "org.jooq:jooq-codegen:3.5.0"
+    compile "com.google.guava:guava:18.0"
+    compile "com.google.code.gson:gson:2.3.1"
+    compile "com.typesafe:config:1.2.1"
+    compile "org.apache.commons:commons-lang3:3.3.2"
+    compile "org.bukkit:bukkit:1.8-R0.1-SNAPSHOT"
+    compile "com.sk89q:intake:3.1.1-SNAPSHOT"
+    compile "mkremins:fanciful:0.2.0-SNAPSHOT"
+    compile "org.flywaydb:flyway-core:3.1"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact shadowJar
+        }
+    }
+    repositories {
+        maven {
+            url "http://repo-topplethenun.rhcloud.com/nexus/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'release'}/"
+            name "nunnerycode-repo"
+            credentials {
+                username System.getenv("nexusUsername") ?: nexusUsername
+                password System.getenv("nexusPassword") ?: nexusPassword
+            }
+        }
+    }
+}
+
+shadowJar {
+    dependencies {
+        exclude("org.bukkit:bukkit:1.8-R0.1-SNAPSHOT")
+    }
+
+    relocate "com.google", "org.nunnerycode.kern.shade.google"
+    relocate "org.jooq", "org.nunnerycode.kern.shade.jooq"
+    relocate "com.typesafe", "org.nunnerycode.kern.typesafe"
+    relocate "org.apache", "org.nunnerycode.kern.apache"
+    relocate "org.aopalliance", "org.nunnerycode.kern.aopalliance"
+    relocate "javax.inject", "org.nunnerycode.kern.inject"
+    relocate "com.sk89q.intake", "org.nunnerycode.kern.intake"
+    relocate "mkremins.fanciful", "org.nunnerycode.kern.fanciful"
+    relocate "org.flywaydb", "org.nunnerycode.kern.flywaydb"
+}
