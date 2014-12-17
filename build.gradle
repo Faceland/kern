@@ -12,7 +12,7 @@ defaultTasks 'clean', 'check', 'build'
 
 group = "org.nunnerycode"
 archivesBaseName = "kern"
-version = "0.0.2"
+version = "0.0.3"
 
 repositories {
     mavenCentral()
@@ -50,8 +50,9 @@ dependencies {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            artifact shadowJar
+        shadow(MavenPublication) {
+            from components.shadow
+            artifactId = "kern-all"
         }
     }
     repositories {
@@ -67,6 +68,9 @@ publishing {
 }
 
 shadowJar {
+    baseName = "kern-all"
+    classifier = ""
+
     dependencies {
         exclude("org.bukkit:bukkit:1.8-R0.1-SNAPSHOT")
     }
