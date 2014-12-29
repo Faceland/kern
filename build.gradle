@@ -25,6 +25,9 @@ repositories {
     maven {
         url "https://raw.github.com/mkremins/fanciful/mvn-repo/"
     }
+    maven {
+        url "https://ci.int32.se/plugin/repository/everything/"
+    }
 }
 
 artifacts {
@@ -41,11 +44,11 @@ dependencies {
     compile "com.typesafe:config:1.2.1"
     compile "org.apache.commons:commons-lang3:3.3.2"
     compile "org.bukkit:bukkit:1.8-R0.1-SNAPSHOT"
-    compile "com.sk89q:intake:3.1.1-SNAPSHOT"
     compile "com.sk89q:squirrelid:0.1.0"
     compile "mkremins:fanciful:0.2.0-SNAPSHOT"
     compile "org.flywaydb:flyway-core:3.1"
     compile "net.objecthunter:exp4j:0.4.0.ALPHA-3"
+    compile "se.ranzdo.bukkit:methodcommand:0.1"
 }
 
 publishing {
@@ -81,9 +84,9 @@ shadowJar {
     relocate "org.apache", "org.nunnerycode.kern.apache"
     relocate "org.aopalliance", "org.nunnerycode.kern.aopalliance"
     relocate "javax.inject", "org.nunnerycode.kern.inject"
-    relocate "com.sk89q.intake", "org.nunnerycode.kern.intake"
     relocate "mkremins.fanciful", "org.nunnerycode.kern.fanciful"
     relocate "net.amoebaman", "org.nunnerycode.kern.amoebaman"
     relocate "org.flywaydb", "org.nunnerycode.kern.flywaydb"
     relocate "net.objecthunter", "org.nunnerycode.kern.objecthunter"
+    relocate "se.ranzdo.bukkit.methodcommand", "org.nunnerycode.kern.methodcommand"
 }
