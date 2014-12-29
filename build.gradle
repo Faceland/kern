@@ -26,7 +26,7 @@ repositories {
         url "https://raw.github.com/mkremins/fanciful/mvn-repo/"
     }
     maven {
-        url "https://ci.int32.se/plugin/repository/everything/"
+        url "http://repository-topplethenun.forge.cloudbees.com/snapshot/"
     }
 }
 
@@ -48,7 +48,7 @@ dependencies {
     compile "mkremins:fanciful:0.2.0-SNAPSHOT"
     compile "org.flywaydb:flyway-core:3.1"
     compile "net.objecthunter:exp4j:0.4.0.ALPHA-3"
-    compile "se.ranzdo.bukkit:methodcommand:0.1"
+    compile "se.ranzdo.bukkit:methodcommand:0.2-SNAPSHOT"
 }
 
 publishing {
