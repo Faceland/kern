@@ -6,3 +6,7 @@ dependencies:
 general:
   artifacts:
     - "build/libs"
+
+test:
+  override:
+    - ./gradlew test
