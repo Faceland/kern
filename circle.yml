@@ -1,0 +1,8 @@
+dependencies:
+  override:
+    - chmod +x gradlew
+    - ./gradlew publish
+
+general:
+  artifacts:
+    - "build/libs"
