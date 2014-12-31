@@ -1,6 +1,0 @@
-language: java
-jdk:
-  - oraclejdk7
-install:
-  - chmod +x gradlew
-  - ./gradlew publish
