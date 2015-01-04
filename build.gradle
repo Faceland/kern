@@ -31,6 +31,14 @@ repositories {
     }
 }
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.getDestinationDir()
+}
+
 artifacts {
     archives shadowJar
     archives sourcesJar
@@ -121,12 +129,4 @@ license {
     mapping {
         java = 'SLASHSTAR_STYLE'
     }
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    from javadoc.getDestinationDir()
 }
