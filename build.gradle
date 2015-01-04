@@ -1,4 +1,5 @@
 plugins {
+    id "com.github.hierynomus.license" version "0.11.0"
     id "com.github.johnrengelman.shadow" version "1.2.0"
     id "java"
     id "maven"
@@ -8,7 +9,7 @@ plugins {
 
 sourceCompatibility = "1.7"
 
-defaultTasks 'clean', 'check', 'build'
+defaultTasks 'clean', 'licenseFormat', 'check', 'build'
 
 group = "org.nunnerycode"
 archivesBaseName = "kern"
@@ -32,6 +33,8 @@ repositories {
 
 artifacts {
     archives shadowJar
+    archives sourcesJar
+    archives javadocJar
 }
 
 dependencies {
@@ -53,9 +56,29 @@ dependencies {
 
 publishing {
     publications {
+        java(MavenPublication) {
+            from components.java
+            artifactId = "kern"
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+
+            artifact javadocJar {
+                classifier "javadoc"
+            }
+        }
         shadow(MavenPublication) {
             from components.shadow
             artifactId = "kern-all"
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+
+            artifact javadocJar {
+                classifier "javadoc"
+            }
         }
     }
     repositories {
@@ -89,4 +112,21 @@ shadowJar {
     relocate "org.flywaydb", "org.nunnerycode.kern.flywaydb"
     relocate "net.objecthunter", "org.nunnerycode.kern.objecthunter"
     relocate "se.ranzdo.bukkit.methodcommand", "org.nunnerycode.kern.methodcommand"
+}
+
+license {
+    header file('HEADER')
+    ignoreFailures false
+    strictCheck true
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.getDestinationDir()
 }
