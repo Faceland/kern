@@ -24,7 +24,7 @@ repositories {
         url "http://maven.sk89q.com/repo/"
     }
     maven {
-        url "https://raw.github.com/mkremins/fanciful/mvn-repo/"
+        url "http://repo.franga2000.com/artifactory/public"
     }
     maven {
         url "http://repository-topplethenun.forge.cloudbees.com/snapshot/"
