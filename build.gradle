@@ -47,9 +47,6 @@ artifacts {
 
 dependencies {
     compile "com.google.inject:guice:4.0-beta5"
-    compile "org.jooq:jooq:3.5.0"
-    compile "org.jooq:jooq-meta:3.5.0"
-    compile "org.jooq:jooq-codegen:3.5.0"
     compile "com.google.guava:guava:18.0"
     compile "com.google.code.gson:gson:2.3.1"
     compile "com.typesafe:config:1.2.1"
@@ -110,14 +107,12 @@ shadowJar {
     }
 
     relocate "com.google", "org.nunnerycode.kern.shade.google"
-    relocate "org.jooq", "org.nunnerycode.kern.shade.jooq"
     relocate "com.typesafe", "org.nunnerycode.kern.typesafe"
     relocate "org.apache", "org.nunnerycode.kern.apache"
     relocate "org.aopalliance", "org.nunnerycode.kern.aopalliance"
     relocate "javax.inject", "org.nunnerycode.kern.inject"
     relocate "mkremins.fanciful", "org.nunnerycode.kern.fanciful"
     relocate "net.amoebaman", "org.nunnerycode.kern.amoebaman"
-    relocate "org.flywaydb", "org.nunnerycode.kern.flywaydb"
     relocate "net.objecthunter", "org.nunnerycode.kern.objecthunter"
     relocate "se.ranzdo.bukkit.methodcommand", "org.nunnerycode.kern.methodcommand"
 }
