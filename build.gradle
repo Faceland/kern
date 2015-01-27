@@ -115,7 +115,6 @@ shadowJar {
     relocate "net.amoebaman", "org.nunnerycode.kern.amoebaman"
     relocate "net.objecthunter", "org.nunnerycode.kern.objecthunter"
     relocate "se.ranzdo.bukkit.methodcommand", "org.nunnerycode.kern.methodcommand"
-    relocate "org.flywaydb", "org.nunnerycode.kern.flywaydb"
 }
 
 license {
