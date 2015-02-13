@@ -11,9 +11,9 @@ sourceCompatibility = "1.7"
 
 defaultTasks 'clean', 'licenseFormat', 'check', 'build'
 
-group = "org.nunnerycode"
+group = "com.tealcube.minecraft.bukkit"
 archivesBaseName = "kern"
-version = "0.0.5-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -87,8 +87,8 @@ publishing {
     }
     repositories {
         maven {
-            url "http://repo-topplethenun.rhcloud.com/nexus/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}/"
-            name "nunnerycode-repo"
+            url "http://tealcube.com/nexus/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}/"
+            name "TealCube"
             credentials {
                 username System.getenv("nexusUsername") ?: nexusUsername
                 password System.getenv("nexusPassword") ?: nexusPassword
@@ -105,14 +105,14 @@ shadowJar {
         exclude("org.bukkit:bukkit:1.8-R0.1-SNAPSHOT")
     }
 
-    relocate "com.google", "org.nunnerycode.kern.shade.google"
-    relocate "com.typesafe", "org.nunnerycode.kern.typesafe"
-    relocate "org.apache", "org.nunnerycode.kern.apache"
-    relocate "org.aopalliance", "org.nunnerycode.kern.aopalliance"
-    relocate "mkremins.fanciful", "org.nunnerycode.kern.fanciful"
-    relocate "net.amoebaman", "org.nunnerycode.kern.amoebaman"
-    relocate "net.objecthunter", "org.nunnerycode.kern.objecthunter"
-    relocate "se.ranzdo.bukkit.methodcommand", "org.nunnerycode.kern.methodcommand"
+    relocate "com.google", "com.tealcube.minecraft.bukkit.kern.shade.google"
+    relocate "com.typesafe", "com.tealcube.minecraft.bukkit.kern.typesafe"
+    relocate "org.apache", "com.tealcube.minecraft.bukkit.kern.apache"
+    relocate "org.aopalliance", "com.tealcube.minecraft.bukkit.kern.aopalliance"
+    relocate "mkremins.fanciful", "com.tealcube.minecraft.bukkit.kern.fanciful"
+    relocate "net.amoebaman", "com.tealcube.minecraft.bukkit.kern.amoebaman"
+    relocate "net.objecthunter", "com.tealcube.minecraft.bukkit.kern.objecthunter"
+    relocate "se.ranzdo.bukkit.methodcommand", "com.tealcube.minecraft.bukkit.kern.methodcommand"
 }
 
 license {

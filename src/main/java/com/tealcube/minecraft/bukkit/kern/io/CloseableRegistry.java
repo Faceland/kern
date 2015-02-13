@@ -12,7 +12,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
  * THIS SOFTWARE.
  */
-package org.nunnerycode.kern.io;
+package com.tealcube.minecraft.bukkit.kern.io;
 
 import java.io.Closeable;
 import java.io.IOException;
