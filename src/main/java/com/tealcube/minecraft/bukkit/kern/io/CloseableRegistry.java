@@ -113,9 +113,20 @@ public final class CloseableRegistry {
     }
 
     /**
+     * Attemps to close all registered {@link java.io.Closeable}s. Ignores thrown Exceptions.
+     */
+    public void closeQuietly() {
+        try {
+            close();
+        } catch (IOException ignored) {
+            // do nothing
+        }
+    }
+
+    /**
      * Attempts to close all registered {@link java.io.Closeable}s.
      *
-     * @throws IOException thrown if unable to close a registered closeable
+     * @throws java.io.IOException thrown if unable to close a registered closeable
      */
     public void close() throws IOException {
         while (!closeableDeque.isEmpty()) {
@@ -125,17 +136,6 @@ public final class CloseableRegistry {
             } catch (IOException e) {
                 throw new IOException("unable to close", e);
             }
-        }
-    }
-
-    /**
-     * Attemps to close all registered {@link java.io.Closeable}s. Ignores thrown Exceptions.
-     */
-    public void closeQuietly() {
-        try {
-            close();
-        } catch (IOException ignored) {
-            // do nothing
         }
     }
 

@@ -2,7 +2,6 @@ plugins {
     id "com.github.hierynomus.license" version "0.11.0"
     id "com.github.johnrengelman.shadow" version "1.2.0"
     id "java"
-    id "maven"
     id "maven-publish"
     id "wrapper"
 }
@@ -27,7 +26,7 @@ repositories {
         url "http://repo.franga2000.com/artifactory/public"
     }
     maven {
-        url "http://repository-topplethenun.forge.cloudbees.com/snapshot/"
+        url "http://tealcube.com/nexus/content/groups/public/"
     }
 }
 
@@ -53,7 +52,6 @@ dependencies {
     compile "org.bukkit:bukkit:1.8-R0.1-SNAPSHOT"
     compile "com.sk89q:squirrelid:0.1.0"
     compile "mkremins:fanciful:0.3.1"
-    compile "org.flywaydb:flyway-core:3.0"
     compile "net.objecthunter:exp4j:0.4.0.ALPHA-3"
     compile "se.ranzdo.bukkit:methodcommand:0.2-SNAPSHOT"
 }
@@ -75,14 +73,6 @@ publishing {
         shadow(MavenPublication) {
             from components.shadow
             artifactId = "kern-all"
-
-            artifact sourcesJar {
-                classifier "sources"
-            }
-
-            artifact javadocJar {
-                classifier "javadoc"
-            }
         }
     }
     repositories {
