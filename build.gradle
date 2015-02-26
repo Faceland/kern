@@ -94,7 +94,7 @@ shadowJar {
     classifier = ""
 
     dependencies {
-        exclude("org.bukkit:bukkit:1.8-R0.1-SNAPSHOT")
+        exclude("org.spigotmc:spigot-api:1.8-R0.1-SNAPSHOT")
     }
 
     relocate "com.google", "com.tealcube.minecraft.bukkit.kern.shade.google"
