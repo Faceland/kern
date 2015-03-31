@@ -1,7 +1,6 @@
 plugins {
     id "com.github.hierynomus.license" version "0.11.0"
     id "com.github.johnrengelman.shadow" version "1.2.0"
-    id "net.researchgate.release" version "2.0.2"
     id "java"
     id "maven-publish"
     id "wrapper"
@@ -115,9 +114,4 @@ license {
     mapping {
         java = 'SLASHSTAR_STYLE'
     }
-}
-
-release {
-    failOnUnversionedFiles = false
-    failOnSnapshotDependencies = false
 }
