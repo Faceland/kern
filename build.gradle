@@ -1,6 +1,7 @@
 plugins {
     id "com.github.hierynomus.license" version "0.11.0"
     id "com.github.johnrengelman.shadow" version "1.2.0"
+    id "net.researchgate.release" version "2.0.2"
     id "java"
     id "maven-publish"
     id "wrapper"
@@ -49,11 +50,11 @@ dependencies {
     compile "com.google.code.gson:gson:2.3.1"
     compile "com.typesafe:config:1.2.1"
     compile "org.apache.commons:commons-lang3:3.3.2"
-    compile("org.spigotmc:spigot-api:1.8-R0.1-SNAPSHOT") {
+    compile("org.spigotmc:spigot-api:1.8.3-R0.1-SNAPSHOT") {
         exclude module: "bungeecord-chat"
     }
     compile "com.sk89q:squirrelid:0.1.0"
-    compile "mkremins:fanciful:0.3.2-SNAPSHOT"
+    compile "mkremins:fanciful:0.3.3-SNAPSHOT"
     compile "net.objecthunter:exp4j:0.4.0.ALPHA-3"
     compile "se.ranzdo.bukkit:methodcommand:0.2-SNAPSHOT"
 }
@@ -94,7 +95,7 @@ shadowJar {
     classifier = ""
 
     dependencies {
-        exclude("org.spigotmc:spigot-api:1.8-R0.1-SNAPSHOT")
+        exclude("org.spigotmc:spigot-api")
     }
 
     relocate "com.google", "com.tealcube.minecraft.bukkit.kern.shade.google"
@@ -114,4 +115,9 @@ license {
     mapping {
         java = 'SLASHSTAR_STYLE'
     }
+}
+
+release {
+    failOnUnversionedFiles = false
+    failOnSnapshotDependencies = false
 }
