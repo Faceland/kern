@@ -1,18 +1,20 @@
 plugins {
-    id "com.github.hierynomus.license" version "0.11.0"
-    id "com.github.johnrengelman.shadow" version "1.2.0"
     id "java"
-    id "maven-publish"
-    id "wrapper"
+    id "com.github.hierynomus.license" version "0.11.0"
+    id "pl.allegro.tech.build.axion-release" version "1.2.4"
+    id "com.github.johnrengelman.shadow" version "1.2.1"
+    id "signing"
 }
 
-sourceCompatibility = "1.7"
+sourceCompatibility = 1.7
 
-defaultTasks 'clean', 'licenseFormat', 'check', 'build'
-
-group = "com.tealcube.minecraft.bukkit"
-archivesBaseName = "kern"
-version = "1.0.1-SNAPSHOT"
+scmVersion {
+    tag {
+        prefix = project.name
+    }
+    createReleaseCommit true
+    releaseCommitMessage { version, position -> "[ci skip] release version: " + version}
+}
 
 repositories {
     mavenCentral()
@@ -27,6 +29,9 @@ repositories {
     }
     maven {
         url "http://tealcube.com/nexus/content/groups/public/"
+    }
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
     }
 }
 
@@ -53,46 +58,12 @@ dependencies {
         exclude module: "bungeecord-chat"
     }
     compile "com.sk89q:squirrelid:0.1.0"
-    compile "mkremins:fanciful:0.3.3-SNAPSHOT"
+    compile "com.tealcube.minecraft.bukkit:fanciful:0.1.0"
     compile "net.objecthunter:exp4j:0.4.0.ALPHA-3"
-    compile "se.ranzdo.bukkit:methodcommand:0.2-SNAPSHOT"
-}
-
-publishing {
-    publications {
-        java(MavenPublication) {
-            from components.java
-            artifactId = "kern"
-
-            artifact sourcesJar {
-                classifier "sources"
-            }
-
-            artifact javadocJar {
-                classifier "javadoc"
-            }
-        }
-        shadow(MavenPublication) {
-            from components.shadow
-            artifactId = "kern-all"
-        }
-    }
-    repositories {
-        maven {
-            url "http://tealcube.com/nexus/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}/"
-            name "TealCube"
-            credentials {
-                username System.getenv("nexusUsername") ?: nexusUsername
-                password System.getenv("nexusPassword") ?: nexusPassword
-            }
-        }
-    }
+    compile "com.tealcube.se.ranzdo.bukkit:methodcommand:0.1.0"
 }
 
 shadowJar {
-    baseName = "kern-all"
-    classifier = ""
-
     dependencies {
         exclude("org.spigotmc:spigot-api")
     }
@@ -104,7 +75,6 @@ shadowJar {
     relocate "mkremins.fanciful", "com.tealcube.minecraft.bukkit.kern.fanciful"
     relocate "net.amoebaman", "com.tealcube.minecraft.bukkit.kern.amoebaman"
     relocate "net.objecthunter", "com.tealcube.minecraft.bukkit.kern.objecthunter"
-    relocate "se.ranzdo.bukkit.methodcommand", "com.tealcube.minecraft.bukkit.kern.methodcommand"
 }
 
 license {
