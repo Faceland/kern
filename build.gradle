@@ -63,7 +63,7 @@ dependencies {
         exclude module: "bungeecord-chat"
     }
     compile "com.sk89q:squirrelid:0.1.0"
-    compile "com.tealcube.minecraft.bukkit:fanciful:0.1.0"
+    compile "com.tealcube.minecraft.bukkit:fanciful:0.1.0:all"
     compile "net.objecthunter:exp4j:0.4.0.ALPHA-3"
     compile "com.tealcube.se.ranzdo.bukkit:methodcommand:0.1.0"
 }
