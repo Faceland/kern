@@ -16,6 +16,11 @@ scmVersion {
     releaseCommitMessage { version, position -> "[ci skip] release version: " + version}
 }
 
+group = "com.tealcube.minecraft.bukkit"
+version = scmVersion.version
+
+apply from: "publish-java.gradle"
+
 repositories {
     mavenCentral()
     maven {
