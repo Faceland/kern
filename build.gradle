@@ -70,8 +70,8 @@ dependencies {
 
 shadowJar {
     dependencies {
-        exclude("org.spigotmc:spigot-api")
-        exclude("org.bukkit:bukkit")
+        exclude(dependency("org.spigotmc:spigot-api"))
+        exclude(dependency("org.bukkit:bukkit"))
     }
 
     relocate "com.google", "com.tealcube.minecraft.bukkit.kern.shade.google"
