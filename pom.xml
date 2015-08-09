@@ -29,11 +29,11 @@
     <parent>
         <groupId>com.tealcube.minecraft.bukkit</groupId>
         <artifactId>bukkit-plugin-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.4</version>
     </parent>
 
     <artifactId>kern</artifactId>
-    <version>0.1.5</version>
+    <version>0.1.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>kern</name>
@@ -47,24 +47,10 @@
         <tag>HEAD</tag>
     </scm>
 
-    <repositories>
-        <repository>
-            <id>spigot-repo</id>
-            <name>Spigot Repository</name>
-            <url>https://hub.spigotmc.org/nexus/content/groups/public</url>
-        </repository>
-        <repository>
-            <id>tealcube-repo</id>
-            <name>Teal Cube Public Repository</name>
-            <url>http://maven.tealcube.com/artifactory/public</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.8.3-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -94,7 +80,7 @@
         <dependency>
             <groupId>com.tealcube.minecraft.bukkit</groupId>
             <artifactId>fanciful</artifactId>
-            <version>2.0.2</version>
+            <version>2.0.6</version>
         </dependency>
         <dependency>
             <groupId>net.objecthunter</groupId>
@@ -104,7 +90,7 @@
         <dependency>
             <groupId>se.ranzdo.bukkit</groupId>
             <artifactId>methodcommand</artifactId>
-            <version>0.2-SNAPSHOT</version>
+            <version>0.3</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -130,42 +116,6 @@
                 <configuration>
                     <source>${project.build.javaVersion}</source>
                     <target>${project.build.javaVersion}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>2.11</version>
-                <configuration>
-                    <header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
-                    <properties>
-                        <owner>Teal Cube Games</owner>
-                        <email>tealcubegames@gmail.com</email>
-                    </properties>
-                    <excludes>
-                        <exclude>**/README</exclude>
-                        <exclude>src/test/resources/**</exclude>
-                        <exclude>src/main/resources/**</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <releaseProfiles>release</releaseProfiles>
-                    <goals>deploy</goals>
-                    <scmCommentPrefix>[maven-release-plugin][ci skip]</scmCommentPrefix>
                 </configuration>
             </plugin>
             <plugin>
@@ -196,31 +146,31 @@
                             <relocations>
                                 <relocation>
                                     <pattern>com.google</pattern>
-                                    <shadedPattern>com.tealcube.minecraft.bukkit.kern.shade.google</shadedPattern>
+                                    <shadedPattern>com.tealcube.minecraft.bukkit.shade.google</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>com.typesafe</pattern>
-                                    <shadedPattern>com.tealcube.minecraft.bukkit.kern.typesafe</shadedPattern>
+                                    <shadedPattern>com.tealcube.minecraft.bukkit.shade.typesafe</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.apache</pattern>
-                                    <shadedPattern>com.tealcube.minecraft.bukkit.kern.apache</shadedPattern>
+                                    <shadedPattern>com.tealcube.minecraft.bukkit.shade.apache</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.aopalliance</pattern>
-                                    <shadedPattern>com.tealcube.minecraft.bukkit.kern.aopalliance</shadedPattern>
+                                    <shadedPattern>com.tealcube.minecraft.bukkit.shade.aopalliance</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>mkremins.fanciful</pattern>
-                                    <shadedPattern>com.tealcube.minecraft.bukkit.kern.fanciful</shadedPattern>
+                                    <shadedPattern>com.tealcube.minecraft.bukkit.shade.fanciful</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>net.amoebaman</pattern>
-                                    <shadedPattern>com.tealcube.minecraft.bukkit.kern.amoebaman</shadedPattern>
+                                    <shadedPattern>com.tealcube.minecraft.bukkit.shade.amoebaman</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>net.objecthunter</pattern>
-                                    <shadedPattern>com.tealcube.minecraft.bukkit.kern.objecthunter</shadedPattern>
+                                    <shadedPattern>com.tealcube.minecraft.bukkit.shade.objecthunter</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -230,70 +180,9 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>tealcube-snapshots</id>
-            <url>http://maven.tealcube.com/artifactory/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>tealcube-repo</id>
-            <url>http://maven.tealcube.com/artifactory/releases</url>
-        </repository>
-    </distributionManagement>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.javaVersion>1.7</project.build.javaVersion>
     </properties>
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9.1</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
