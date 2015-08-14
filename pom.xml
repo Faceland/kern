@@ -32,7 +32,7 @@
     </parent>
 
     <artifactId>kern</artifactId>
-    <version>0.1.7-SNAPSHOT</version>
+    <version>0.1.7</version>
     <packaging>jar</packaging>
 
     <name>kern</name>
