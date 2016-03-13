@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'com.github.hierynomus.license' version '0.12.1'
+    id 'net.researchgate.release' version '2.3.4'
+}
+
+group = 'com.tealcubegames.minecraft.spigot'
+
+apply from: getGradleScriptsFile('src/main/resources/publish-java.gradle')
+apply from: getGradleScriptsFile('src/main/resources/license-header.gradle')
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+    maven {
+        url 'http://maven.tealcubegames.com/content/groups/public/'
+    }
+}
+
+dependencies {
+    compile('org.spigotmc:spigot-api:1.9-SNAPSHOT') {
+        exclude module: 'bungeecord-chat'
+    }
+    compile 'com.tealcubegames.minecraft.spigot:fanciful:3.0.0-SNAPSHOT'
+    compile 'com.tealcubegames.minecraft.spigot:hilt:3.0.1-SNAPSHOT'
+    compile 'se.ranzdo.bukkit:methodcommand:3.0.0-SNAPSHOT'
+    compile 'net.objecthunter:exp4j:0.4.0.ALPHA-3'
+    testCompile 'junit:junit:4.12'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+release {
+    failOnSnapshotDependencies = false
+}
+
+def getGradleScriptsFile(String name) {
+    return "https://raw.githubusercontent.com/TealCube/gradle-scripts/master/$name"
+}
