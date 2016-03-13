@@ -5,3 +5,6 @@ branches:
   only:
   - master
 script: gradle publish
+env:
+  global:
+    secure: YO5hLHoLMioaYufjJ55iqMy9/C41TuDwxLDhmDrjPf+ST4VmoHEMHxyPNiJowjEFYxrXDW/HD/ajPxpqYmRaZkDObqXEbzDYeY0a8H2FDzCKSIqshTN5gOvGspQVCDLCSfk0+P02J2+tHI0PY80pWwLgtVngXxaqH38nnVnTw64=
