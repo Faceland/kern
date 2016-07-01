@@ -77,9 +77,9 @@
             <version>0.2.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.tealcubegames.minecraft.spigot</groupId>
+            <groupId>com.tealcube.minecraft.bukkit</groupId>
             <artifactId>fanciful</artifactId>
-            <version>3.0.0-SNAPSHOT</version>
+            <version>2.0.10-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.objecthunter</groupId>
